@@ -27,4 +27,4 @@ Route::get('/info', function () {
 
 Route::get('/news/{number}', function (int $newsNumber) {
     return "Новость №$newsNumber";
-}); //коммент, чтобы отправить pull request
+}); //коммент, чтобы отправить pull request1
