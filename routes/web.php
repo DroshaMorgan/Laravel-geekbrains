@@ -1,6 +1,9 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\NewsController;
+use App\Http\Controllers\Admin\NewsController as AdminNewsController;
+use App\Http\Controllers\Admin\CategoryController as AdminCategoryController;
 
 /*
 |--------------------------------------------------------------------------
@@ -17,14 +20,22 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/hello/{name}', function (string $name) {
-    return "Добро пожаловать, $name";
+Route::group(['prefix' => 'admin', 'as' => 'admin.'], function() {
+    Route::resource('categories', AdminCategoryController::class);
+    Route::resource('news', AdminNewsController::class);
 });
 
-Route::get('/info', function () {
-    return "Первый урок по созданию агрегатора новостей";
-});
+//news routes
+/*Route::get('/categories', [CategoryController::class, 'categories'])
+    ->name('news.categories');*/
+Route::get('/hello', [NewsController::class, 'hello'])
+    ->name('news.hello');
 
-Route::get('/news/{number}', function (int $newsNumber) {
-    return "Новость №$newsNumber";
-}); //коммент, чтобы отправить pull request1
+Route::get('/category', [NewsController::class, 'category'])
+    ->name('news.category');
+
+Route::get('/news', [NewsController::class, 'index'])
+    ->name('news.index');
+Route::get('/news/{id}', [NewsController::class, 'show'])
+    ->where('id', '\d+')
+    ->name('news.show');
