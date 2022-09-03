@@ -13,11 +13,11 @@ class NewsController extends Controller
 
     public function category()
     {
-        return view('news.category');
-        /*$category = $this->getCategory();
+        /*return view('news.category');*/
+        $category = $this->getCategory();
         return view('news.category', [
-            '$categoryList' => $category
-        ]);*/
+            'categoryList' => $category
+        ]);
     }
 
     public function index()

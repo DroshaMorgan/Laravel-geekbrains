@@ -40,10 +40,16 @@ class Controller extends BaseController
         return $news;
     }
 
-    /*public function getCategory(): array
+    public function getCategory(/*int $id = null*/): array
     {
         $category = [];
         $faker = Factory::create();
+
+        /*if($id) {
+            return [
+                'categoryTitle'       => $faker->jobTitle(),
+            ];
+        }*/
 
         for($i=1; $i<5; $i++) {
             $category[$i] = [
@@ -52,5 +58,5 @@ class Controller extends BaseController
         }
 
         return $category;
-    }*/
+    }
 }
