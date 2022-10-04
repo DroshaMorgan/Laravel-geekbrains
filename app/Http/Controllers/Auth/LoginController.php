@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers\Auth;
 
-use App\Events\LoginEvent;
 use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
@@ -52,6 +51,6 @@ class LoginController extends Controller
 
     protected function authenticated(Request $request, $user)
     {
-        event(new LoginEvent($user));
+        //
     }
 }
