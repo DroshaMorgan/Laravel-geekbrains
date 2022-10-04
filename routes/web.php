@@ -38,7 +38,7 @@ Route::middleware('auth')->group(function() {
     });
 });
 
-//news routes
+ //news routes
 /*Route::get('/categories', [CategoryController::class, 'categories'])
     ->name('news.categories');*/
 Route::get('/hello', [NewsController::class, 'hello'])
